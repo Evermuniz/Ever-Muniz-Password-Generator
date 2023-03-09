@@ -44,9 +44,20 @@ function writePassword() {
 
   passwordArray.push(a+b+c+d)}
 
+// function shuffleArray (passwordArray){
+//     for (var i= passwordArray.length - 1; i>0; i--){
+//       var j = math.floor(Math.random()*(i +1));
+//       var temp = passwordArray [i];
+//       passwordArray [i] = passwordArray [j];
+//       passwordArray[j] = temp;}}
+
+
+
+//   shuffleArray();
+
 
   function generatePassword(){ 
-    return passwordArray;
+    return passwordArray.join("");
   };
 
 
