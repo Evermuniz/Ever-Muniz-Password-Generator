@@ -8,8 +8,6 @@ var passwordArray = [];
 
 // Write password to the #password input
 function writePassword() {
-
-  
   var length = prompt("How many characters would you like in your password? Choose between 8 and 128.");
     if (!length){return};
 
@@ -20,12 +18,12 @@ function writePassword() {
     }
     else {return};
   };
-  
-  var lowerCase = prompt("Would you like your password to contain lower case letters? Enter Y or N")
-    if (!lowerCase){return};
 
   var upperCase = prompt("Would you like your password to contain upper case letters? Enter Y or N")
     if (!upperCase){return};
+
+  var lowerCase = prompt("Would you like your password to contain lower case letters? Enter Y or N")
+    if (!lowerCase){return};
 
   var numeric = prompt("Would you like your password to contain numbers? Enter Y or N")
     if (!numeric){return};
@@ -33,8 +31,19 @@ function writePassword() {
   var specialCharacter = prompt("Would you like your password to contain special characters? Enter Y or N")
     if (!specialCharacter){return};
 
-  
-  if (upperCase === "Y" || "y'")
+  if (upperCase != "Y" && lowerCase != "Y" && numeric != "Y" && specialCharacter != "Y" ){
+  var selectOne = window.confirm("You must select at least one class of characters. Try again?")
+    if (selectOne){
+      writePassword();
+    } else {return}};
+
+
+  upperCase = upperCase.toUpperCase();  
+  lowerCase = lowerCase.toUpperCase();
+  numeric = numeric.toUpperCase();
+  specialCharacter = specialCharacter.toUpperCase();
+
+  if (upperCase === "Y")
   for (var i=0; i<length; i++){
   var index = Math.floor(Math.random() * upperCaseArray.length)
   var a = upperCaseArray[index];
@@ -55,12 +64,6 @@ function writePassword() {
   var d = specialCharacterArray[index];
   if (specialCharacter != "Y") {d = ""};
 
-    if (upperCase != "Y" && lowerCase != "Y" && numeric != "Y" && specialCharacter != "Y" )
-    var selectOne = window.confirm("You must select at least one class of characters")
-    if (selectOne){
-      writePassword();
-    };
-
   passwordArray.push(a+b+c+d)}
 
   function generatePassword(){ 
@@ -70,13 +73,8 @@ function writePassword() {
 
   var password = generatePassword();
 
-
-
-
   var passwordText = document.querySelector("#password");
   
-
-
   passwordText.value = password;
 
 };
