@@ -8,9 +8,16 @@ var passwordArray = [];
 
 // Write password to the #password input
 function writePassword() {
-  var length = prompt("How many characters would you like in your password? Choose between 8 and 128.")
+  
+  var length = prompt("How many characters would you like in your password? Choose between 8 and 128.");
     console.log(length);
 
+  if (length < 8 ||length>128) {
+  var tryAgain = window.confirm("Out of range. Try again?")
+    if (tryAgain){
+      writePassword();
+    }};
+  
   var lowerCase = prompt("Would you like your password to contain lower case letters? Enter Y or N")
     console.log(lowerCase);
 
@@ -23,38 +30,35 @@ function writePassword() {
   var specialCharacter = prompt("Would you like your password to contain special characters? Enter Y or N")
     console.log(specialCharacter);
 
-
   
-  if (upperCase === "Y")
+  if (upperCase === "Y" || "y'")
   for (var i=0; i<length; i++){
   var index = Math.floor(Math.random() * upperCaseArray.length)
   var a = upperCaseArray[index];
+  if (upperCase != "Y") {a = ""};
 
   if (lowerCase === "Y")
   var index = Math.floor(Math.random() * lowerCaseArray.length)
   var b = lowerCaseArray[index];
+  if (lowerCase != "Y") {b = ""};
 
   if (numeric === "Y")
   var index = Math.floor(Math.random() * numericArray.length)
   var c = numericArray[index];
+  if (numeric != "Y") {c = ""};
 
   if (specialCharacter === "Y")
   var index = Math.floor(Math.random() * specialCharacterArray.length)
   var d = specialCharacterArray[index];
+  if (specialCharacter != "Y") {d = ""};
+
+    if (upperCase != "Y" && lowerCase != "Y" && numeric != "Y" && specialCharacter != "Y" )
+    var selectOne = window.confirm("You must select at least one class of characters")
+    if (selectOne){
+      writePassword();
+    };
 
   passwordArray.push(a+b+c+d)}
-
-// function shuffleArray (passwordArray){
-//     for (var i= passwordArray.length - 1; i>0; i--){
-//       var j = math.floor(Math.random()*(i +1));
-//       var temp = passwordArray [i];
-//       passwordArray [i] = passwordArray [j];
-//       passwordArray[j] = temp;}}
-
-
-
-//   shuffleArray();
-
 
   function generatePassword(){ 
     return passwordArray.join("");
