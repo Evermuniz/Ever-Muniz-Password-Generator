@@ -7,27 +7,23 @@ var specialCharacterArray = ["!", "@", "#", "$", "%", "^", "&", "*",];
 var options = ["Y", "N", "y", "n"];
 
   
-
 // Write password to the #password input
 function writePassword() {
 
   var passwordArray = [];
-
+do{
   var length = prompt("How many characters would you like in your password? Choose between 8 and 128.");
     if (!length){return};
-
+    numericArray = length.split(',').map(Number);
+  if (!numericArray.every(Number.isFinite)) window.alert("Invalid")
   if (length < 8 ||length>128) {
   var tryAgain = window.confirm("Out of range. Try again?")
     if (tryAgain){
       writePassword();
     }
-  if (!numericArray.includes(length)){
-    var tryAgain = window.confirm("Out of range. Try again?")
-    if (tryAgain){
-      writePassword();
-  }
     else {return};
-  };
+  };}
+  while (!numericArray.every(Number.isFinite));
 
 do{
   var upperCase = prompt("Would you like your password to contain upper case letters? Enter Y or N")
