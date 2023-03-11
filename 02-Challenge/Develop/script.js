@@ -1,22 +1,17 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
-var upperCaseArray = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
-var lowerCaseArray = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
-var numericArray = ["0","1","2","3","4","5","6","7","8","9"];
-var specialCharacterArray = ["!", "@", "#", "$", "%", "^", "&", "*",];
-var options = ["Y", "N", "y", "n"];
-
   
 // Write password to the #password input
 function writePassword() {
 
   var passwordArray = [];
+
 do{
-  var length = prompt("How many characters would you like in your password? Choose between 8 and 128.");
-    if (!length){return};
-    numericArray = length.split(',').map(Number);
+  var range = prompt("How many characters would you like in your password? Choose between 8 and 128.");
+    if (!range){return};
+    numericArray = range.split(',').map(Number);
   if (!numericArray.every(Number.isFinite)) window.alert("Invalid")
-  if (length < 8 ||length>128) {
+  if (range < 8 ||range>128) {
   var tryAgain = window.confirm("Out of range. Try again?")
     if (tryAgain){
       writePassword();
@@ -24,6 +19,14 @@ do{
     else {return};
   };}
   while (!numericArray.every(Number.isFinite));
+
+
+var upperCaseArray = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+var lowerCaseArray = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+var numericArray = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+var specialCharacterArray = ["!", "@", "#", "$", "%", "^", "&", "*",];
+var options = ["Y", "N", "y", "n"];
+
 
 do{
   var upperCase = prompt("Would you like your password to contain upper case letters? Enter Y or N")
@@ -60,7 +63,7 @@ do{
     } else {return}};
 
 
-    for (var i=0; i<(length); i++){
+    for (var i=0; i<(range); i++){
   if (upperCase === "Y") {
   var index = Math.floor(Math.random() * upperCaseArray.length)
   var a = upperCaseArray[index]
@@ -76,7 +79,7 @@ do{
   if (numeric === "Y"){
   var index = Math.floor(Math.random() * numericArray.length)
   var c = numericArray[index];
-  passwordArray.push(c);};
+  passwordArray.push (c);};
   
 
   if (specialCharacter === "Y"){
@@ -85,7 +88,7 @@ do{
     passwordArray.push(d);}};
 
 
-  passwordArray.splice(length);
+  passwordArray.splice(range);
 
 
 function generatePassword(){ 
